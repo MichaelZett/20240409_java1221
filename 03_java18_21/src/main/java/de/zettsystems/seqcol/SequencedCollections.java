@@ -1,10 +1,6 @@
 package de.zettsystems.seqcol;
 
-import java.util.ArrayDeque;
-import java.util.Deque;
-import java.util.List;
-import java.util.SortedSet;
-import java.util.TreeSet;
+import java.util.*;
 
 public class SequencedCollections {
 
@@ -48,5 +44,8 @@ public class SequencedCollections {
         System.out.println(first);
         last = sortedSet.getLast();
         System.out.println(last);
+
+        System.out.println("Reversed " + items.reversed());
+        System.out.println("Normal " + items);
     }
 }

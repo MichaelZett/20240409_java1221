@@ -2,7 +2,7 @@ package de.zettsystems.structured;
 
 import java.util.concurrent.StructuredTaskScope;
 
-public class StructuredConcurrentApp {
+public class StructuredConcurPlanetApp {
     void sc() throws Exception {
         int[] planetIds = {1,2,3,4,5};
         try (var scope = new StructuredTaskScope<>()) {
@@ -15,7 +15,7 @@ public class StructuredConcurrentApp {
         }
     }
     public static void main(String[] args) {
-        var myApp = new StructuredConcurrentApp();
+        var myApp = new StructuredConcurPlanetApp();
         // ...
         System.out.println("\n\r-- BEGIN Structured Concurrency");
         try {

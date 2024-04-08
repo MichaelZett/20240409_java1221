@@ -6,6 +6,13 @@ import java.util.concurrent.*;
 import java.util.function.Supplier;
 
 public class UnStructuredConcurrency {
+
+    public static void main(String[] args) throws ExecutionException, InterruptedException {
+        UnStructuredConcurrency app = new UnStructuredConcurrency();
+        System.out.println("Un " + app.generateInvoice());
+        System.out.println("Struc " + app.generateInvoiceStructured());
+    }
+
     Invoice generateInvoice() throws ExecutionException, InterruptedException {
         try (ExecutorService executorService = Executors.newFixedThreadPool(3)) {
             Future<Issuer> issuer = executorService.submit(this::findIssuer);
@@ -16,9 +23,9 @@ public class UnStructuredConcurrency {
         }
     }
 
-//    [1]: We create a new StructuredTaskScope with the policy ShutdownOnFailure. If an exception is thrown by findIssuer, findCustomer, or findItems,
-//    each thread will be stopped and an error will be returned.
-//    [2]: Waits for all subtasks in scope to be finished and throws ExecutionException on any failure
+    //    [1]: We create a new StructuredTaskScope with the policy ShutdownOnFailure. If an exception is thrown by findIssuer, findCustomer, or findItems,
+    //    each thread will be stopped and an error will be returned.
+    //    [2]: Waits for all subtasks in scope to be finished and throws ExecutionException on any failure
     Invoice generateInvoiceStructured() throws ExecutionException, InterruptedException {
         try (var scope = new StructuredTaskScope.ShutdownOnFailure()) { // [1]
             Supplier<Issuer> issuer = scope.fork(this::findIssuer);

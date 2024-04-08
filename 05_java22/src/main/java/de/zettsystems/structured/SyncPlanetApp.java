@@ -1,6 +1,6 @@
 package de.zettsystems.structured;
 
-public class SyncApp {
+public class SyncPlanetApp {
     void sync() throws Exception {
         int[] planetIds = {1,2,3,4,5};
         for (int planetId : planetIds) {
@@ -8,7 +8,7 @@ public class SyncApp {
         }
     }
     public static void main(String[] args) {
-        var myApp = new SyncApp();
+        var myApp = new SyncPlanetApp();
         System.out.println("\n\r-- BEGIN Sync");
         try {
             myApp.sync();

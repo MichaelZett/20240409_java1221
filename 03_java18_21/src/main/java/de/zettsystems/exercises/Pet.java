@@ -1,6 +1,6 @@
 package de.zettsystems.exercises;
 
-interface Pet {
+public interface Pet {
     String getName();
 }
 
